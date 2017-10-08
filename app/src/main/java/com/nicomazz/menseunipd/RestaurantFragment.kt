@@ -56,7 +56,7 @@ class RestaurantFragment : Fragment() {
 
     private fun setRestaurantMenu() {
         restaurant?.name.let{
-            activity.title = it
+            activity?.title = it
         }
         rootView.menuText.text = restaurant?.menu.toString().toHtml()
     }
