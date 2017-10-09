@@ -50,7 +50,9 @@ class RestaurantFragment : Fragment() {
                     setRestaurantMenu()
                 },
                 onError = { message ->
-                    Toast.makeText(context,"Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                    context?.let {
+                        Toast.makeText(context, "Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                    }
                 })
     }
 

@@ -1,5 +1,7 @@
 package com.nicomazz.menseunipd.services
 
+import android.util.JsonReader
+import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +17,8 @@ import retrofit2.http.GET
 class EsuRestApi {
     private val esuApi: EsuClient
 
-    private val BASE_URL = "http://mobile.esupd.gov.it"
+    //private val BASE_URL = "http://mobile.esupd.gov.it"
+    private val BASE_URL = "http://taptaptap.altervista.org"
 
     init {
 
@@ -35,6 +38,7 @@ class EsuRestApi {
     fun getRestaurants(onSuccess: (List<Restaurant?>?) -> Unit,
                        onError: (String) -> Unit) {
         val call = esuApi.getInfo()
+
 
         call.enqueue(object : Callback<List<Restaurant>> {
             override fun onResponse(call: Call<List<Restaurant>>?, response: Response<List<Restaurant>>?) {
@@ -62,10 +66,12 @@ class EsuRestApi {
 
 
     private interface EsuClient {
-        @GET("/api/reiservice.svc/canteens?lang=it")
+      //  @GET("/api/reiservice.svc/canteens?lang=it")
+        @GET("/ristoresu/cacher.php")
         fun getInfo(): Call<List<Restaurant>>
     }
-
+// http://mobile.esupd.gov.it/api/reiservice.svc/canteens?lang=it
+// http://taptaptap.altervista.org/ristoresu/cacher.php
     companion object {
         var cachedRestaurant: List<Restaurant?>? = null
     }

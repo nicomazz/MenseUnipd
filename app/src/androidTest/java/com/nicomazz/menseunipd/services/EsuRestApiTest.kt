@@ -1,16 +1,27 @@
 package com.nicomazz.menseunipd.services
 
+import okhttp3.mockwebserver.MockWebServer
+import org.junit.Before
 import org.junit.Test
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+
 
 /**
  * Created by Nicolò Mazzucato on 08/10/2017.
  */
 class EsuRestApiTest {
 
+
+    private val server = MockWebServer()
+    @Before
+    fun setUp() {
+        server.start()
+        server.url("/")
+    }
+
     @Test
-    fun getInfo() {
+    fun baseTest() {
         val countdown = CountDownLatch(1)
 
         val api = EsuRestApi()
@@ -40,4 +51,9 @@ class EsuRestApiTest {
 
     }
 
+
+    @Test
+    fun testOnCachedResponse() {
+
+    }
 }

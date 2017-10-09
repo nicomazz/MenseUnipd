@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val navigation = findViewById(R.id.navigation) as BottomNavigationView
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         if (getFavouriteRestaurantName() != null) {
@@ -56,10 +55,17 @@ class MainActivity : AppCompatActivity() {
                 setFavouriteFragment()
             }
             R.id.navigation_notifications -> {
+                setNotificationFragment()
+
             }
         }
         true
     }
+
+    private fun setNotificationFragment() {
+        val frag = NotificationFragment()
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.content, frag).commit();    }
 
     //todo set favourite name
     private fun getFavouriteRestaurantName(): String? = "murialdo"

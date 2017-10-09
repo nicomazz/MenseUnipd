@@ -1,0 +1,471 @@
+[
+  {
+    "id": "ME_05",
+    "name": "Belzoni",
+    "address": "Via Belzoni, 158",
+    "city": "PADOVA",
+    "phone": null,
+    "email": null,
+    "website": null,
+    "type": {
+      "id": "1",
+      "name": "Convenzionata",
+      "description": "Mensa convenzionata"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": "18:45-21:00",
+    "services": [],
+    "latitude": "45.40767",
+    "longitude": "11.891949",
+    "active": true,
+    "menuAvailable": false,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_07",
+    "name": "Murialdo",
+    "address": "Via Grassi, 20",
+    "city": "PADOVA",
+    "phone": "049 772011",
+    "email": null,
+    "website": null,
+    "type": {
+      "id": "1",
+      "name": "Convenzionata",
+      "description": "Mensa convenzionata"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": null,
+    "services": [],
+    "latitude": "45.413334",
+    "longitude": "11.902742",
+    "active": true,
+    "menuAvailable": true,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": [
+          {
+            "id": "[,]",
+            "name": "mezze maniche alle melanzane ",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[,]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[,]",
+            "name": "farfalle alla sorrentina ",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[,]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[,]",
+            "name": "crema di patate con riso ",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[,]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[,]",
+            "name": "pasta e riso bianco e pomodoro ",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[,]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          }
+        ],
+        "secondcourse": [
+          {
+            "id": "[]",
+            "name": "braciola di maiale ai ferri",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "filetto di nasello alle solive",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "panzerotti alla caprese",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "pollo con peperoni",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "sopressa e asiago",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          }
+        ],
+        "sideorder": [
+          {
+            "id": "[]",
+            "name": "cavolfiori gratinati",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "fagiolini all'olio",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "crocchette di patate",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "buffet di insalatine miste",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          }
+        ],
+        "dessert": [
+          {
+            "id": "[]",
+            "name": "millefoglie alla crema con cioccolato",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "dolce morbido alla frutta",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          },
+          {
+            "id": "[]",
+            "name": "macedonia di frutta fresca",
+            "link": "http:\/\/www.esupd.gov.it\/it\/Pagine\/Ingredienti.aspx?idpiatto=[]",
+            "vegetarian": false,
+            "celiac": false,
+            "frozen": false,
+            "pdg": false
+          }
+        ]
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_06",
+    "name": "Forcellini",
+    "address": "Via Forcellini, 172",
+    "city": "PADOVA",
+    "phone": "049 8033100",
+    "email": "info@forcellini.it",
+    "website": "http:\/\/www.forcellini.it",
+    "type": {
+      "id": "1",
+      "name": "Convenzionata",
+      "description": "Mensa convenzionata"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": null,
+    "services": [
+      {
+        "id": "1",
+        "name": "Celiaci",
+        "description": "pasti per celiaci"
+      }
+    ],
+    "latitude": "45.395195",
+    "longitude": "11.905575",
+    "active": true,
+    "menuAvailable": false,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_04",
+    "name": "Acli",
+    "address": "Via Bonporti, 20",
+    "city": "PADOVA",
+    "phone": "049 8762255",
+    "email": null,
+    "website": null,
+    "type": {
+      "id": "1",
+      "name": "Convenzionata",
+      "description": "Mensa convenzionata"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": "18:45-21:00",
+    "services": [],
+    "latitude": "45.405275",
+    "longitude": "11.871672",
+    "active": true,
+    "menuAvailable": false,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_01",
+    "name": "San Francesco",
+    "address": "Via San Francesco, 122",
+    "city": "PADOVA",
+    "phone": "049 8235688 ",
+    "email": "ristorazione@esu.pd.it",
+    "website": "http:\/\/www.esu.pd.it",
+    "type": {
+      "id": "2",
+      "name": "ESU",
+      "description": "Mensa ESU a gestione diretta"
+    },
+    "lunchTime": "11:30-14:30",
+    "dinnerTime": "18:45-21:00",
+    "services": [
+      {
+        "id": "1",
+        "name": "Celiaci",
+        "description": "pasti per celiaci"
+      }
+    ],
+    "latitude": "45.404198",
+    "longitude": "11.881081",
+    "active": true,
+    "menuAvailable": false,
+    "links": [
+      {
+        "id": "3",
+        "name": "FB",
+        "description": "La nostra pagina Facebook",
+        "link": "https:\/\/www.facebook.com\/EsuPadova.officialpage"
+      },
+      {
+        "id": "4",
+        "name": "TW",
+        "description": "Il nostro profilo Twitter",
+        "link": "https:\/\/mobile.twitter.com\/EsudiPadova"
+      },
+      {
+        "id": "5",
+        "name": "YT",
+        "description": "Il nostro canale Youtube",
+        "link": "http:\/\/www.youtube.com\/user\/PadovaEsu"
+      }
+    ],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_03",
+    "name": "Agripolis",
+    "address": "Viale dell'Università, 16 (ex via Romea)",
+    "city": "Legnaro (PD) ",
+    "phone": "049 8837168",
+    "email": null,
+    "website": null,
+    "type": {
+      "id": "2",
+      "name": "ESU",
+      "description": "Mensa ESU a gestione diretta"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": "18:45-21:00",
+    "services": [
+      {
+        "id": "3",
+        "name": "PastoLight",
+        "description": "disponibilità Pasto Light"
+      }
+    ],
+    "latitude": "45.345284",
+    "longitude": "11.959991",
+    "active": true,
+    "menuAvailable": false,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  },
+  {
+    "id": "ME_02",
+    "name": "Nord Piovego",
+    "address": "Via G. Colombo, 1 (angolo con via Ugo Bassi )",
+    "city": "PADOVA",
+    "phone": "049 8071530 ",
+    "email": null,
+    "website": null,
+    "type": {
+      "id": "2",
+      "name": "ESU",
+      "description": "Mensa ESU a gestione diretta"
+    },
+    "lunchTime": "11:45-14:30",
+    "dinnerTime": "18:45-21:00",
+    "services": [
+      {
+        "id": "3",
+        "name": "PastoLight",
+        "description": "disponibilità Pasto Light"
+      },
+      {
+        "id": "5",
+        "name": "Pizzeria",
+        "description": "servizio di Pizzeria"
+      }
+    ],
+    "latitude": "45.410758",
+    "longitude": "11.891177",
+    "active": true,
+    "menuAvailable": false,
+    "links": [],
+    "waitTimeDate": null,
+    "waitTime": null,
+    "menu": {
+      "lunch": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      },
+      "dinner": {
+        "maincourse": null,
+        "secondcourse": null,
+        "sideorder": null,
+        "dessert": null
+      }
+    },
+    "photo": null
+  }
+]

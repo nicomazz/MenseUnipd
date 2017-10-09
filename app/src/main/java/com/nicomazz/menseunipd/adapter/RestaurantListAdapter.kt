@@ -1,9 +1,11 @@
-package com.nicomazz.menseunipd
+package com.nicomazz.menseunipd.adapter
 
 import android.util.Log
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.nicomazz.menseunipd.R
 import com.nicomazz.menseunipd.services.Restaurant
+import com.nicomazz.menseunipd.toHtml
 import kotlinx.android.synthetic.main.restaurant_list_item.view.*
 
 /**

@@ -43,10 +43,16 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.nex3z:toggle-button-group:1.0.3'
+    compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
 
-    compile 'com.android.support:support-v4:26.+'
+
+
+    //compile 'com.android.support:support-v4:26.+'
 
     testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.squareup.okhttp3:mockwebserver:3.8.0'
 }
 repositories {
     mavenCentral()

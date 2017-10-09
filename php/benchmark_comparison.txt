@@ -1,0 +1,114 @@
+original esu service:
+
+ ab -k -c 20 -n 20 http://mobile.esupd.gov.it/api/reiservice.svc/canteens?lang=it
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking mobile.esupd.gov.it (be patient).....done
+
+
+Server Software:        Microsoft-IIS/7.5
+Server Hostname:        mobile.esupd.gov.it
+Server Port:            80
+
+Document Path:          /api/reiservice.svc/canteens?lang=it
+Document Length:        21128 bytes
+
+Concurrency Level:      20
+Time taken for tests:   16.823 seconds
+Complete requests:      20
+Failed requests:        0
+Keep-Alive requests:    20
+Total transferred:      427240 bytes
+HTML transferred:       422560 bytes
+Requests per second:    1.19 [#/sec] (mean)
+Time per request:       16822.868 [ms] (mean)
+Time per request:       841.143 [ms] (mean, across all concurrent requests)
+Transfer rate:          24.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       37   40   1.8     41      43
+Processing:  9216 12593 3303.9  10332   16784
+Waiting:     9181 12560 3307.0  10301   16761
+Total:       9258 12633 3303.8  10374   16823
+
+Percentage of the requests served within a certain time (ms)
+  50%  10374
+  66%  16440
+  75%  16492
+  80%  16586
+  90%  16693
+  95%  16823
+  98%  16823
+  99%  16823
+ 100%  16823 (longest request)
+
+
+
+
+
+
+
+
+
+
+cached service:
+
+ab -k -c 20 -n 1000 ...
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ... (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        Apache
+Server Hostname:        ...
+Server Port:            80
+
+Document Path:          ...
+Document Length:        0 bytes
+
+Concurrency Level:      20
+Time taken for tests:   16.947 seconds
+Complete requests:      1000
+Failed requests:        999
+   (Connect: 0, Receive: 0, Length: 999, Exceptions: 0)
+Keep-Alive requests:    0
+Total transferred:      3483874 bytes
+HTML transferred:       3329874 bytes
+Requests per second:    59.01 [#/sec] (mean)
+Time per request:       338.942 [ms] (mean)
+Time per request:       16.947 [ms] (mean, across all concurrent requests)
+Transfer rate:          200.76 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       37   96 157.9     49    1679
+Processing:    39  213 599.8     56   10972
+Waiting:       39  118 289.1     55    5853
+Total:         77  310 704.5    105   12158
+
+Percentage of the requests served within a certain time (ms)
+  50%    105
+  66%    115
+  75%    125
+  80%    139
+  90%    570
+  95%   1722
+  98%   2192
+  99%   2950
+ 100%  12158 (longest request)
