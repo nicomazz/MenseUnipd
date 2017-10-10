@@ -7,7 +7,8 @@ import android.text.Spanned
 /**
  * Created by Nicolò Mazzucato on 08/10/2017.
  */
-fun String.toHtml(): Spanned = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-    Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT);
-} else
-    Html.fromHtml("<h2>Title</h2><br><p>Description here</p>");
+fun String.toHtml(): Spanned =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(this.replace("Patate","<b><font color=red>Patate</font></b>"), Html.FROM_HTML_MODE_COMPACT);
+        } else
+            Html.fromHtml(this)
