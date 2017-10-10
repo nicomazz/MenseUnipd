@@ -1,7 +1,5 @@
 package com.nicomazz.menseunipd.services
 
-import android.util.JsonReader
-import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,12 +34,15 @@ class EsuRestApi {
     }
 
     fun getRestaurants(onSuccess: (List<Restaurant?>?) -> Unit,
-                       onError: (String) -> Unit) {
+                       onError: (String) -> Unit,
+                       onTime: (Long) -> Unit = {}) { // millis impiegati
         val call = esuApi.getInfo()
 
-
+        val startMillis = System.currentTimeMillis()
         call.enqueue(object : Callback<List<Restaurant>> {
             override fun onResponse(call: Call<List<Restaurant>>?, response: Response<List<Restaurant>>?) {
+
+                onTime(System.currentTimeMillis() - startMillis)
                 cachedRestaurant = response?.body()
                 onSuccess(response?.body())
             }
@@ -54,23 +55,26 @@ class EsuRestApi {
 
     fun getRestaurant(name: String,
                       onSuccess: (Restaurant?) -> Unit,
-                      onError: (String) -> Unit) {
+                      onError: (String) -> Unit,
+                      onTime: (Long) -> Unit = {}) {
         getRestaurants(onSuccess = { restaurants ->
             cachedRestaurant = restaurants
-            val target = restaurants?.firstOrNull { it?.name?.toLowerCase()?.contains(name) ?: false }
+            val target = restaurants?.firstOrNull { it?.name?.toLowerCase()?.contains(name.toLowerCase()) ?: false }
             if (target != null)
                 onSuccess(target)
             else onError("Restaurant not found!")
-        }, onError = onError)
+        }, onError = onError,
+                onTime = onTime)
     }
 
 
     private interface EsuClient {
-      //  @GET("/api/reiservice.svc/canteens?lang=it")
+        //  @GET("/api/reiservice.svc/canteens?lang=it")
         @GET("/ristoresu/cacher.php")
         fun getInfo(): Call<List<Restaurant>>
     }
-// http://mobile.esupd.gov.it/api/reiservice.svc/canteens?lang=it
+
+    // http://mobile.esupd.gov.it/api/reiservice.svc/canteens?lang=it
 // http://taptaptap.altervista.org/ristoresu/cacher.php
     companion object {
         var cachedRestaurant: List<Restaurant?>? = null

@@ -11,7 +11,6 @@ import com.google.gson.Gson
 import com.nicomazz.menseunipd.services.EsuRestApi
 import com.nicomazz.menseunipd.services.Restaurant
 import kotlinx.android.synthetic.main.fragment_restaurant.view.*
-import org.jetbrains.anko.support.v4.act
 
 
 /**
@@ -22,7 +21,7 @@ import org.jetbrains.anko.support.v4.act
 class RestaurantFragment : Fragment() {
 
     private var restaurant: Restaurant? = null
-    private var restaurantName: String? = "murialdo"
+    private var restaurantName: String = "murialdo"
 
     private lateinit var rootView: View
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,28 +38,41 @@ class RestaurantFragment : Fragment() {
         if (restaurant != null) {
             setRestaurantMenu()
         } else fetchRestaurant()
+
+        rootView.swipeRefresh.setOnRefreshListener {
+            fetchRestaurant()
+        }
         return rootView
 
     }
 
     private fun fetchRestaurant() {
-        EsuRestApi().getRestaurant(restaurantName!!,
+        rootView.swipeRefresh.isRefreshing = true
+        EsuRestApi().getRestaurant(restaurantName,
                 onSuccess = { fetchedRestaurant ->
+                    rootView.swipeRefresh.isRefreshing = false
                     restaurant = fetchedRestaurant
                     setRestaurantMenu()
                 },
                 onError = { message ->
+                    rootView.swipeRefresh.isRefreshing = false
                     context?.let {
                         Toast.makeText(context, "Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                    }
+                },
+                onTime = { time ->
+                    activity?.let {
+                        Toast.makeText(it, "request time: $time ms", Toast.LENGTH_SHORT).show()
                     }
                 })
     }
 
     private fun setRestaurantMenu() {
-        restaurant?.name.let{
-            activity?.title = it
+        restaurant?.let {
+            activity?.title = it.name
+            rootView.restaurantView.setRestaurant(it)
+
         }
-        rootView.menuText.text = restaurant?.menu.toString().toHtml()
     }
 
     fun getArgs() {
@@ -71,9 +83,9 @@ class RestaurantFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        restaurantName = arguments.getString(RESTAURANT_NAME_PARAM, null)
+        restaurantName = arguments.getString(RESTAURANT_NAME_PARAM, "")
 
-        if (restaurant == null && restaurantName == null)
+        if (restaurant == null && restaurantName.isBlank())
             Toast.makeText(context, "No restaurant info", Toast.LENGTH_LONG).show()
 
     }
@@ -99,6 +111,7 @@ class RestaurantFragment : Fragment() {
                 }
             }
         }
+
         fun newInstance(aRestaurantName: String?, aRestaurant: Restaurant?): RestaurantFragment {
             if (aRestaurant != null) return newInstance(aRestaurant)
             return newInstance(aRestaurantName)

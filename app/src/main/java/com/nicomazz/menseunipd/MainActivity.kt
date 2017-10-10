@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
+import com.crashlytics.android.Crashlytics
+import com.nicomazz.menseunipd.data.FavouriteManager
 import com.nicomazz.menseunipd.services.EsuRestApi
 import com.nicomazz.menseunipd.services.Restaurant
-import kotlinx.android.synthetic.main.activity_main.*
-import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Fabric.with(this, Crashlytics())
+        Fabric.with(this, Crashlytics().beta)
         setContentView(R.layout.activity_main)
 
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun getJsonInfo() {
         EsuRestApi().getRestaurants(onSuccess = { restarants ->
             restaurantsFetched = restarants
@@ -43,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         }, onError = { description ->
             message.text = "Error in request!"
             Log.e(TAG, "Error in retrieve restaurants: $description")
+        }, onTime = { time ->
+            Toast.makeText(this,"request time: $time ms",Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -65,10 +69,10 @@ class MainActivity : AppCompatActivity() {
     private fun setNotificationFragment() {
         val frag = NotificationFragment()
         supportFragmentManager.beginTransaction()
-                .replace(R.id.content, frag).commit();    }
+                .replace(R.id.content, frag).commit(); }
 
     //todo set favourite name
-    private fun getFavouriteRestaurantName(): String? = "murialdo"
+    private fun getFavouriteRestaurantName(): String? = FavouriteManager.getFavourite(this)
 
     private fun getFavouriteRestaurant(): Restaurant? {
         if (restaurantsFetched == null)

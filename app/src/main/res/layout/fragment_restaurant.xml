@@ -4,17 +4,22 @@
     android:layout_height="match_parent"
     tools:context="com.nicomazz.menseunipd.RestaurantFragment">
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/swipeRefresh">
 
-        <TextView
-            android:id="@+id/menuText"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/loading" />
+            android:layout_height="match_parent">
 
-    </ScrollView>
+            <com.nicomazz.menseunipd.View.RestaurantView
+                android:id="@+id/restaurantView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </FrameLayout>

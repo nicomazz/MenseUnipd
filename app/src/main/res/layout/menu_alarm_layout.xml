@@ -18,21 +18,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Canteen name"
+            android:lines="1"
             android:text="Murialdo"
             app:met_floatingLabel="highlight"
-            app:met_minCharacters="3" />
+            app:met_minCharacters="3"
+            app:met_maxCharacters="10"/>
 
         <include layout="@layout/week_view" />
 
-        <TextView
-            android:id="@+id/timeLabel"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="12:30"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="24sp" />
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+            <ImageButton
+                android:id="@+id/delete"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_close_black_24dp"
+                android:tint="@color/accent"/>
+            <TextView
+                android:id="@+id/timeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:30"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="24sp"
+                android:layout_toLeftOf="@id/delete"/>
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 

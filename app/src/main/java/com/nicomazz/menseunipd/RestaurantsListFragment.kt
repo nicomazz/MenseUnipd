@@ -3,6 +3,7 @@ package com.nicomazz.menseunipd
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,10 @@ class RestaurantsListFragment : Fragment() {
         if (restaurants != null) {
             initList()
         } else fetchRestaurants()
+
+        rootView.swipeRefresh.setOnRefreshListener {
+            fetchRestaurants()
+        }
         return rootView
 
     }
@@ -41,18 +46,28 @@ class RestaurantsListFragment : Fragment() {
         rootView.list.layoutManager = LinearLayoutManager(context)
         val adapter = RestaurantListAdapter()
         adapter.bindToRecyclerView(rootView.list)
-        adapter.setNewData(restaurants)
+        val sorted = ArrayList(restaurants).sortedBy { it?.menu?.isEmpty() }
+
+        adapter.setNewData(sorted)
 
     }
 
     private fun fetchRestaurants() {
+        rootView.swipeRefresh.isRefreshing = true
         EsuRestApi().getRestaurants(
                 onSuccess = { fetchedRestaurant ->
+                    rootView.swipeRefresh.isRefreshing = false
                     restaurants = fetchedRestaurant
                     initList()
                 },
                 onError = { message ->
+                    rootView.swipeRefresh.isRefreshing = false
                     Toast.makeText(context, "Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                },
+                onTime = { time ->
+                    activity?.let {
+                        Toast.makeText(it, "request time: $time ms", Toast.LENGTH_SHORT).show()
+                    }
                 })
     }
 

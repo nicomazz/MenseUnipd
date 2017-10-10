@@ -11,42 +11,44 @@
         android:layout_height="wrap_content"
         app:tbgChildSpacing="auto">
 
-        <com.nex3z.togglebuttongroup.button.CircularToggle
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="S" />
+
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="M" />
+
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="S" />
 
-        <com.nex3z.togglebuttongroup.button.CircularToggle
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M" />
 
-        <com.nex3z.togglebuttongroup.button.CircularToggle
-
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="S" />
 
-        <com.nex3z.togglebuttongroup.button.CircularToggle
-
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M" />
 
-        <com.nex3z.togglebuttongroup.button.CircularToggle
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="S" />
-
-        <com.nex3z.togglebuttongroup.button.CircularToggle
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="M" />
-
-        <com.nex3z.togglebuttongroup.button.CircularToggle
-
+        <com.nicomazz.menseunipd.View.MyCircularToggle
+            android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M" />

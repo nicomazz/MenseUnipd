@@ -10,9 +10,17 @@ open class Meal {
     val maincourse: List<Food?>? = null
 
     open fun getName() = "Meal"
+
     override fun toString(): String {
         return StringBuilder().apply {
             append("<h3>${getName()}:</h3><br>")
+            append(toCourseString())
+            append("<br>")
+        }.toString()
+    }
+
+    fun toCourseString() : String{
+        return StringBuilder().apply {
             append("<b>Main:</b> ${maincourse.toString()}")
             append("<br>")
             append("<b>Second:</b> "+secondcourse.toString())
@@ -20,9 +28,11 @@ open class Meal {
             append("<b>Side:</b> "+sideorder.toString())
             append("<br>")
             append("<b>Dessert:</b> "+dessert.toString())
-            append("<br>")
-
         }.toString()
+    }
+
+    fun isEmpty(): Boolean{
+        return maincourse?.isEmpty() ?: true
     }
 }
 

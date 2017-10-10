@@ -8,4 +8,6 @@ data class Menu(
         val dinner: Dinner? = null
 ){
     override fun toString(): String = lunch.toString()+"<br>"+dinner.toString()
+
+    fun isEmpty() = (lunch?.isEmpty() ?: true && dinner?.isEmpty() ?: true)
 }
