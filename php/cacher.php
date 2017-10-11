@@ -1,8 +1,6 @@
 <?php
-	// define the path and name of cached file
-	$cachefile = 'cached-files/cached_esu.json';
-	// define how long we want to keep the file in seconds. I set mine to 5 hours.
-	$cachetime = 60*5; // 5 minuti
+
+require_once __DIR__ . '/cacher_utils.php';
 	// Check if the cached file is still fresh. If it is, serve it up and exit.
 	if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
 		include($cachefile);

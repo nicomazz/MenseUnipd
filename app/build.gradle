@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
-apply plugin: 'realm-android'
 
 
 android {
@@ -48,11 +47,11 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.nex3z:toggle-button-group:1.0.3'
     compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.1'
-    compile 'io.realm:android-adapters:2.0.0'
 
     compile "org.jetbrains.anko:anko:0.10.1"
 
 
+    compile 'com.evernote:android-job:1.2.0'
 
 
     //compile 'com.android.support:support-v4:26.+'

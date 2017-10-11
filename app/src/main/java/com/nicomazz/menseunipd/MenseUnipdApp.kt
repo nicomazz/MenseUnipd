@@ -1,8 +1,8 @@
 package com.nicomazz.menseunipd
 
 import android.app.Application
-import io.realm.Realm
-import io.realm.RealmConfiguration
+import com.evernote.android.job.JobManager
+import com.nicomazz.menseunipd.services.FetchJobCreator
 
 
 /**
@@ -12,12 +12,8 @@ class MenseUnipdApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initRealm()
+        JobManager.create(this).addJobCreator(FetchJobCreator())
+
     }
 
-    private fun initRealm() {
-        Realm.init(this)
-        val config = RealmConfiguration.Builder().name("menseUnipd.realm").build()
-        Realm.setDefaultConfiguration(config)
-    }
 }

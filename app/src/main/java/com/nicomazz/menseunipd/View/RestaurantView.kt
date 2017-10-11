@@ -5,7 +5,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.nicomazz.menseunipd.R
+import com.nicomazz.menseunipd.data.MenuAlarm
+import com.nicomazz.menseunipd.data.MenuAlarmDataSource
 import com.nicomazz.menseunipd.services.Restaurant
 import com.nicomazz.menseunipd.toHtml
 import kotlinx.android.synthetic.main.restaurant_view.view.*
@@ -42,8 +45,30 @@ class RestaurantView : FrameLayout {
     fun setRestaurant(item: Restaurant) {
         with(mRootView) {
             lunch_text.text = item.menu?.lunch?.toCourseString()?.toHtml()
-            dinner_text.text = item.menu?.dinner?.toCourseString()?.toHtml()
+            //   dinner_text.text = item.menu?.dinner?.toCourseString()?.toHtml()
             restaurantName.text = item.name
+            setupButtonNotifyVisibility(item)
+
+
+        }
+    }
+
+    // se ci sono elementi con il nome in auto scheduling allora non aggiungo
+    private fun setupButtonNotifyVisibility(item: Restaurant) {
+        mRootView.buttonNotifyMenu.visibility =
+                if (item.isEmpty() && MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context,item.name) == false)
+                    View.VISIBLE
+                else View.GONE
+
+        buttonNotifyMenu.setOnClickListener {
+            if (!MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context,item.name)) {
+                val menuAlarm = MenuAlarm(name = item.name!!, untilMenuRelease = true)
+                MenuAlarmDataSource.add(context, menuAlarm)
+                menuAlarm.schedule()
+                buttonNotifyMenu.visibility = View.GONE
+                Toast.makeText(context, "Scheduled", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

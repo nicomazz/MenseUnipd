@@ -46,29 +46,36 @@
                 android:id="@+id/lunch_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/buttonNotifyMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notify when menu appears"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored" />
             <!--   <android.support.v7.widget.RecyclerView
                    android:id="@+id/lunch_list"
                    android:paddingLeft="10dp"
                    android:paddingRight="10dp"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"/>-->
-            <TextView
+          <!--  <TextView
                 android:id="@+id/dinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dinner:"
                 android:textColor="@color/primary"
                 android:textStyle="bold" />
-            <!-- <android.support.v7.widget.RecyclerView
+            &lt;!&ndash; <android.support.v7.widget.RecyclerView
                  android:id="@+id/dinner_list"
                  android:paddingLeft="10dp"
                  android:paddingRight="10dp"
                  android:layout_width="match_parent"
-                 android:layout_height="wrap_content"/>-->
+                 android:layout_height="wrap_content"/>&ndash;&gt;
             <TextView
                 android:id="@+id/dinner_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />-->
         </LinearLayout>
     </LinearLayout>
 

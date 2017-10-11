@@ -1,5 +1,6 @@
 package com.nicomazz.menseunipd.services
 
+import android.util.Log
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -7,6 +8,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -59,12 +62,25 @@ class EsuRestApi {
                       onTime: (Long) -> Unit = {}) {
         getRestaurants(onSuccess = { restaurants ->
             cachedRestaurant = restaurants
-            val target = restaurants?.firstOrNull { it?.name?.toLowerCase()?.contains(name.toLowerCase()) ?: false }
+            val target = restaurants?.firstOrNull { it?.name?.toLowerCase()?.contains(name.trim().toLowerCase()) ?: false }
             if (target != null)
                 onSuccess(target)
             else onError("Restaurant not found!")
         }, onError = onError,
                 onTime = onTime)
+    }
+
+    fun getRestaurantSync(name: String): Restaurant? {
+        val cowndownLatch = CountDownLatch(1)
+        var target: Restaurant? = null
+        getRestaurants(onSuccess = { restaurants ->
+            cachedRestaurant = restaurants
+            target = restaurants?.firstOrNull { it?.name?.toLowerCase()?.contains(name.trim().toLowerCase()) ?: false }
+            Log.d("EsuApi","Target: $target")
+            cowndownLatch.countDown()
+        }, onError = { cowndownLatch.countDown() })
+        cowndownLatch.await(20, TimeUnit.SECONDS)
+        return target
     }
 
 

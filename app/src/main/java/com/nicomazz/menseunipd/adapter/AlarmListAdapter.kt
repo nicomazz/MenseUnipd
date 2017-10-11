@@ -6,6 +6,7 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
@@ -28,11 +29,11 @@ import java.util.*
  */
 
 
-class AlarmListAdapter(val activity: Activity)
+class AlarmListAdapter(private val activity: Activity,
+                       private val updateFun: () -> Unit = {})
     : BaseQuickAdapter<MenuAlarm, BaseViewHolder>(R.layout.menu_alarm_layout) {
 
     override fun convert(viewHolder: BaseViewHolder, item: MenuAlarm) {
-        Log.d(TAG, "call convert!");
         with(viewHolder.itemView) {
 
             Handler().post {
@@ -41,6 +42,9 @@ class AlarmListAdapter(val activity: Activity)
                 updateTime(timeLabel, item)
                 setupTimeLabel(timeLabel, item)
                 setupDelete(delete, item)
+
+                weeks_day.visibility = if (item.untilMenuRelease) View.GONE else View.VISIBLE
+                untilMenuTextView.visibility = if (item.untilMenuRelease) View.VISIBLE else View.GONE
             }
 
         }
@@ -58,6 +62,7 @@ class AlarmListAdapter(val activity: Activity)
     private fun setupDelete(delete: ImageButton?, item: MenuAlarm) {
         delete?.setOnClickListener {
             item.remove()
+            updateFun()
         }
     }
 
@@ -71,8 +76,7 @@ class AlarmListAdapter(val activity: Activity)
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (item.isValid)
-                    item.setCanteenName(s.toString())
+                item.setCanteenName(s.toString())
             }
 
         })
@@ -100,7 +104,6 @@ class AlarmListAdapter(val activity: Activity)
     }
 
 
-
     private fun setupTimeLabel(timeLabel: TextView, item: MenuAlarm) {
         timeLabel.setOnClickListener {
             val mcurrentTime = Calendar.getInstance()
@@ -114,7 +117,7 @@ class AlarmListAdapter(val activity: Activity)
                         val cal = Calendar.getInstance()
                         cal.set(Calendar.HOUR_OF_DAY, selectedHour)
                         cal.set(Calendar.MINUTE, selectedMinute)
-                        item.updateTime(cal.time)
+                        item.updateTimeAndRescheduleIfNeeded(cal.time)
                         updateTime(timeLabel, item)
                     }, hour, minute, true)
             mTimePicker.setTitle("Select Time")
