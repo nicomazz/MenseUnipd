@@ -7,11 +7,12 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.nicomazz.menseunipd.R
+import com.nicomazz.menseunipd.data.FavouriteManager
+import com.nicomazz.menseunipd.data.Meal
 import com.nicomazz.menseunipd.data.MenuAlarm
 import com.nicomazz.menseunipd.data.MenuAlarmDataSource
 import com.nicomazz.menseunipd.services.Restaurant
-import com.nicomazz.menseunipd.toHtml
-import kotlinx.android.synthetic.main.restaurant_view.view.*
+import kotlinx.android.synthetic.main.view_restaurant.view.*
 
 class RestaurantView : FrameLayout {
     private val TAG = "RestaurantView"
@@ -37,31 +38,75 @@ class RestaurantView : FrameLayout {
 
         val inflater = context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.restaurant_view, this, true)
+        inflater.inflate(R.layout.view_restaurant, this, true)
 
         mRootView = getChildAt(0)
     }
 
+    fun expand() {
+        mealContainer.visibility = View.VISIBLE
+        expand_collapse.setImageResource(R.drawable.ic_expand_less_white_24dp)
+    }
+
+    fun collapse() {
+        mealContainer.visibility = View.GONE
+        expand_collapse.setImageResource(R.drawable.ic_expand_more_white_24dp)
+    }
+
     fun setRestaurant(item: Restaurant) {
         with(mRootView) {
-            lunch_text.text = item.menu?.lunch?.toCourseString()?.toHtml()
-            //   dinner_text.text = item.menu?.dinner?.toCourseString()?.toHtml()
+            mealContainer.removeAllViews()
+            generateMealViews(item.menu?.lunch).forEach { mealContainer.addView(it) }
+
             restaurantName.text = item.name
             setupButtonNotifyVisibility(item)
 
+            setupStarButton(item)
+
+            setupExpandCollapse()
 
         }
     }
 
+    private fun setupExpandCollapse() {
+        restaurantName.setOnClickListener {
+            if (mealContainer.visibility == View.VISIBLE) {
+                collapse()
+            } else {
+                expand()
+            }
+        }
+    }
+
+    private fun setupStarButton(item: Restaurant) {
+        with(mRootView.star_button) {
+            isLiked = FavouriteManager.getFavourite(context).contains(item.name ?: "-")
+            setOnClickListener {
+                FavouriteManager.setFavourite(context, item.name)
+            }
+        }
+    }
+
+    fun generateMealViews(item: Meal?): List<View> {
+        if (item == null || item.isEmpty()) return ArrayList()
+        return ArrayList<View>().apply {
+            add(SectionedDetailsView(context).apply { setCourse(item.maincourse, "Main") })
+            add(SectionedDetailsView(context).apply { setCourse(item.secondcourse, "Second") })
+            add(SectionedDetailsView(context).apply { setCourse(item.sideorder, "Side") })
+            add(SectionedDetailsView(context).apply { setCourse(item.dessert, "Dessert") })
+        }
+    }
+
+
     // se ci sono elementi con il nome in auto scheduling allora non aggiungo
     private fun setupButtonNotifyVisibility(item: Restaurant) {
         mRootView.buttonNotifyMenu.visibility =
-                if (item.isEmpty() && MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context,item.name) == false)
+                if (item.isEmpty() && MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context, item.name) == false)
                     View.VISIBLE
                 else View.GONE
 
         buttonNotifyMenu.setOnClickListener {
-            if (!MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context,item.name)) {
+            if (!MenuAlarmDataSource.hasAlarmUntilMenuForRestaurantNamed(context, item.name)) {
                 val menuAlarm = MenuAlarm(name = item.name!!, untilMenuRelease = true)
                 MenuAlarmDataSource.add(context, menuAlarm)
                 menuAlarm.schedule()

@@ -1,6 +1,7 @@
 package com.nicomazz.menseunipd.View
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import com.nex3z.togglebuttongroup.button.CircularToggle
@@ -10,10 +11,13 @@ import com.nex3z.togglebuttongroup.button.CircularToggle
  */
 class MyCircularToggle(context: Context?, attrs: AttributeSet?) : CircularToggle(context, attrs) {
 
+    override  fun getCheckedTextColor(): Int {
+        return Color.WHITE
+    }
     fun setCheckedWithoutAnimation(checked: Boolean) {
         super.setChecked(checked)
         val defaultTextColor = defaultTextColor
-        val checkedTextColor = checkedTextColor
+        val checkedTextColor = Color.WHITE
         if (checked) {
             mIvBg.visibility = View.VISIBLE
             mIvBg.scaleX = 1f

@@ -25,7 +25,7 @@
 
         <include
             android:id="@+id/weeks_day"
-            layout="@layout/week_view" />
+            layout="@layout/view_week" />
 
         <TextView
             android:id="@+id/untilMenuTextView"

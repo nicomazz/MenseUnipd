@@ -2,6 +2,7 @@ package com.nicomazz.menseunipd.data
 
 import android.content.Context
 import android.preference.PreferenceManager
+import com.nicomazz.menseunipd.services.Restaurant
 
 /**
  * Created by Nicolò Mazzucato on 11/10/2017.
@@ -18,5 +19,6 @@ object FavouriteManager {
 
     private fun getPref(context: Context) =
             PreferenceManager.getDefaultSharedPreferences(context)
+
 
 }

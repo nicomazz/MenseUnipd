@@ -46,12 +46,11 @@ open class MenuAlarm(
         }
     }
 
-    fun isActiveOnDay(day: Int) = get(1.shl(day))
+    fun isActiveOnDay(day: Int) = get(1.shl(day)) // 0 = domenica
 
     fun isActiveToday(): Boolean {
         val cal = Calendar.getInstance()
-        Log.d("MenuAlarm", "oggi è : ${cal.get(Calendar.DAY_OF_WEEK)}")
-        return isActiveOnDay(cal.get(Calendar.DAY_OF_WEEK))
+        return isActiveOnDay(cal.get(Calendar.DAY_OF_WEEK)-1)
     }
 
     fun setActiveOnDay(active: Boolean, day: Int) {

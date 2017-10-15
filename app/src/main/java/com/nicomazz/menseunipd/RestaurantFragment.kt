@@ -71,6 +71,7 @@ class RestaurantFragment : Fragment() {
         restaurant?.let {
             activity?.title = it.name
             rootView.restaurantView.setRestaurant(it)
+            rootView.restaurantView.expand()
 
         }
     }

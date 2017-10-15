@@ -2,8 +2,15 @@ package com.nicomazz.menseunipd
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.util.Linkify
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.nicomazz.menseunipd.data.FavouriteManager
@@ -18,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private val TAG = javaClass.name
 
     private var restaurantsFetched: List<Restaurant?>? = null
+
+    private var pageId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +43,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
 
     private fun getJsonInfo() {
         EsuRestApi().getRestaurants(onSuccess = { restarants ->
@@ -46,21 +60,24 @@ class MainActivity : AppCompatActivity() {
             message.text = "Error in request!"
             Log.e(TAG, "Error in retrieve restaurants: $description")
         }, onTime = { time ->
-            Toast.makeText(this,"request time: $time ms",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "request time: $time ms", Toast.LENGTH_SHORT).show()
         })
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                setRestaurantList()
-            }
-            R.id.navigation_favourite -> {
-                setFavouriteFragment()
-            }
-            R.id.navigation_notifications -> {
-                setNotificationFragment()
+        if (item.itemId != pageId) {
+            pageId = item.itemId
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    setRestaurantList()
+                }
+                R.id.navigation_favourite -> {
+                    setFavouriteFragment()
+                }
+                R.id.navigation_notifications -> {
+                    setNotificationFragment()
 
+                }
             }
         }
         true
@@ -71,7 +88,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.content, frag).commit(); }
 
-    //todo set favourite name
     private fun getFavouriteRestaurantName(): String? = FavouriteManager.getFavourite(this)
 
     private fun getFavouriteRestaurant(): Restaurant? {
@@ -91,4 +107,29 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.content, RestaurantsListFragment()).commit();
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.info -> showInfoDialog()
+            else -> {
+            }
+        }
+        return true
+    }
+
+    private fun showInfoDialog() {
+
+        val s = SpannableString("Source code and more informations at: github.com/nicomazz/MenseUnipd");
+        Linkify.addLinks(s, Linkify.ALL);
+
+        val dialog = AlertDialog.Builder(this)
+                .setTitle("About")
+                .setMessage(s)
+                .setPositiveButton("Ok", { _, _ -> })
+                .create()
+
+        dialog.show()
+
+        (dialog.findViewById<TextView>(android.R.id.message))?.movementMethod = LinkMovementMethod.getInstance()
+
+    }
 }

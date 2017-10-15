@@ -17,7 +17,7 @@ import com.nicomazz.menseunipd.R
 import com.nicomazz.menseunipd.View.MyCircularToggle
 import com.nicomazz.menseunipd.data.MenuAlarm
 import kotlinx.android.synthetic.main.menu_alarm_layout.view.*
-import kotlinx.android.synthetic.main.week_view.view.*
+import kotlinx.android.synthetic.main.view_week.view.*
 import org.jetbrains.anko.forEachChildWithIndex
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat

@@ -2,13 +2,13 @@
 require_once __DIR__ . '/cacher_utils.php';
 	
 	// Check if the cached file is still fresh. If it is, serve it up and exit.
-	if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
+	//if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) {
 		//include($cachefile);
 		//files already present and updated
-		exit;
-	}
+		//exit;
+	//}
 	ignore_user_abort(true);
-	set_time_limit(0);
+	set_time_limit(30);
 	
 	ob_start();
 	// do initial processing here

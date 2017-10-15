@@ -9,7 +9,7 @@ import com.nicomazz.menseunipd.data.FavouriteManager
 import com.nicomazz.menseunipd.services.Restaurant
 import com.nicomazz.menseunipd.toHtml
 import kotlinx.android.synthetic.main.restaurant_list_item.view.*
-import kotlinx.android.synthetic.main.restaurant_view.view.*
+import kotlinx.android.synthetic.main.view_restaurant.view.*
 import org.jetbrains.anko.wrapContent
 
 /**
