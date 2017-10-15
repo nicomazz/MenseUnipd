@@ -17,6 +17,7 @@ import com.nicomazz.menseunipd.data.FavouriteManager
 import com.nicomazz.menseunipd.services.EsuRestApi
 import com.nicomazz.menseunipd.services.Restaurant
 import io.fabric.sdk.android.Fabric
+import io.fabric.sdk.android.services.common.Crash
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Fabric.with(this, Crashlytics().beta)
+        Fabric.with(Fabric.Builder(this).kits(Crashlytics()).debuggable(true).build())
         setContentView(R.layout.activity_main)
 
 
