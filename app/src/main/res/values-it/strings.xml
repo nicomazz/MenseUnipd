@@ -17,5 +17,12 @@
     <string name="canteen_name">Nome della mensa</string>
     <string name="info">Info</string>
     <string name="until_menu_release">Controllerà il menu una volta ogni 15 minuti finchè questo uscirà.</string>
+    <string name="att_favourites">Imposta come preferito</string>
+    <string name="dessert">Dessert</string>
+    <string name="main">Primo</string>
+    <string name="second">Secondo</string>
+    <string name="side">Contorno</string>
+    <string name="notify_menu">Inviami una notifica quando esce il menu</string>
+    <string name="time_gain">Tempo risparmiato</string>
 
 </resources>

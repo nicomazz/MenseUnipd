@@ -16,12 +16,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
+            android:animateLayoutChanges="true"
             >
             <TextView
                 android:id="@+id/restaurantName"
@@ -43,13 +45,21 @@
                 android:layout_marginLeft="10dp"
                 android:scaleX="2"
                 android:scaleY="2"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
             <ImageView
                 android:id="@+id/expand_collapse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_expand_more_white_24dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"/>
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_vert_white_24dp"
+                android:layout_toLeftOf="@id/expand_collapse"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
 
@@ -85,7 +95,7 @@
             fancy:fb_fontIconResource="&#xf017;"
             fancy:fb_iconPosition="left"
             fancy:fb_radius="30dp"
-            fancy:fb_text="Notify when menu appears"
+            fancy:fb_text="@string/notify_menu"
             fancy:fb_textColor="#FFFFFF" />
 
 

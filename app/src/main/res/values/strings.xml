@@ -16,4 +16,11 @@
     <string name="info">info</string>
     <string name="canteen_name">Canteen name</string>
     <string name="until_menu_release">Until menu release</string>
+    <string name="att_favourites">Set favourite</string>
+    <string name="main">Main</string>
+    <string name="second">Second</string>
+    <string name="side">Side</string>
+    <string name="dessert">Dessert</string>
+    <string name="notify_menu">Notify when menu appears</string>
+    <string name="time_gain">Time gain</string>
 </resources>

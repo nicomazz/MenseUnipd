@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="@string/info"
+        android:id="@+id/time"
+        android:icon="@drawable/ic_timer_white_24dp"
+        android:title="@string/time_gain"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/info"
         android:icon="@drawable/ic_info_outline_white_24dp"
+        android:title="@string/info"
         app:showAsAction="always" />
+
 </menu>

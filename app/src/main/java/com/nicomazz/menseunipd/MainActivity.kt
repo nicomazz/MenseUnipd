@@ -14,10 +14,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.nicomazz.menseunipd.data.FavouriteManager
+import com.nicomazz.menseunipd.data.TimeSavedManager
 import com.nicomazz.menseunipd.services.EsuRestApi
 import com.nicomazz.menseunipd.services.Restaurant
 import io.fabric.sdk.android.Fabric
-import io.fabric.sdk.android.services.common.Crash
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         if (getFavouriteRestaurantName() != null) {
             navigation.selectedItemId = R.id.navigation_favourite
         }
-        getJsonInfo()
+        // getJsonInfo()
 
     }
 
@@ -111,10 +111,31 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.info -> showInfoDialog()
+            R.id.time -> showTimeDialog()
             else -> {
             }
         }
         return true
+    }
+
+    private fun showTimeDialog() {
+
+
+        val millis_gain = TimeSavedManager.getMsSaved(this)
+        var message = "Grazie a quest'app sono stati risparmiati <b>${millis_gain / 1000} secondi</b> per il caricamento dei dati rispetto all'app ufficiale.<br>Scopri di più su github.com/nicomazz/MenseUnipd"
+        message += "<br><br>Numero richieste: ${TimeSavedManager.getRequestsNumber(this)}"
+        message += "<br>Tempo medio per richiesta: ${TimeSavedManager.getMeanTime(this)} ms"
+        val s = SpannableString(message.toHtml());
+        Linkify.addLinks(s, Linkify.ALL);
+        val dialog = AlertDialog.Builder(this)
+                .setTitle(getString(R.string.time_gain))
+                .setMessage(s)
+                .setPositiveButton(getString(R.string.ok), { _, _ -> })
+                .create()
+
+        dialog.show()
+
+        (dialog.findViewById<TextView>(android.R.id.message))?.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun showInfoDialog() {

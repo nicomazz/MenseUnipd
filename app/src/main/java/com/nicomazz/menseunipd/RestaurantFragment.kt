@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.gson.Gson
+import com.nicomazz.menseunipd.data.TimeSavedManager
 import com.nicomazz.menseunipd.services.EsuRestApi
 import com.nicomazz.menseunipd.services.Restaurant
 import kotlinx.android.synthetic.main.fragment_restaurant.view.*
@@ -63,6 +64,7 @@ class RestaurantFragment : Fragment() {
                 onTime = { time ->
                     activity?.let {
                         Toast.makeText(it, "request time: $time ms", Toast.LENGTH_SHORT).show()
+                        TimeSavedManager.addRequestTime(time,it)
                     }
                 })
     }

@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.PopupMenu
 import android.widget.Toast
 import com.nicomazz.menseunipd.R
 import com.nicomazz.menseunipd.data.FavouriteManager
@@ -19,7 +20,7 @@ class RestaurantView : FrameLayout {
 
 
     private lateinit var mRootView: View
-
+    private var restaurant: Restaurant? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -41,6 +42,8 @@ class RestaurantView : FrameLayout {
         inflater.inflate(R.layout.view_restaurant, this, true)
 
         mRootView = getChildAt(0)
+        setupMenu()
+
     }
 
     fun expand() {
@@ -54,6 +57,7 @@ class RestaurantView : FrameLayout {
     }
 
     fun setRestaurant(item: Restaurant) {
+        restaurant = item
         with(mRootView) {
             mealContainer.removeAllViews()
             generateMealViews(item.menu?.lunch).forEach { mealContainer.addView(it) }
@@ -66,6 +70,18 @@ class RestaurantView : FrameLayout {
             setupExpandCollapse()
 
         }
+    }
+
+    private fun setupMenu() {
+        val popup = PopupMenu(context, mRootView.menu)
+
+
+        popup.menuInflater.inflate(R.menu.restaurant_menu, popup.menu);
+        popup.setOnMenuItemClickListener {
+            FavouriteManager.setFavourite(context, restaurant?.name ?: "")
+            true
+        }
+        rootView.menu.setOnClickListener { popup.show() }
     }
 
     private fun setupExpandCollapse() {
@@ -90,10 +106,10 @@ class RestaurantView : FrameLayout {
     fun generateMealViews(item: Meal?): List<View> {
         if (item == null || item.isEmpty()) return ArrayList()
         return ArrayList<View>().apply {
-            add(SectionedDetailsView(context).apply { setCourse(item.maincourse, "Main") })
-            add(SectionedDetailsView(context).apply { setCourse(item.secondcourse, "Second") })
-            add(SectionedDetailsView(context).apply { setCourse(item.sideorder, "Side") })
-            add(SectionedDetailsView(context).apply { setCourse(item.dessert, "Dessert") })
+            add(SectionedDetailsView(context).apply { setCourse(item.maincourse, context.getString(R.string.main)) })
+            add(SectionedDetailsView(context).apply { setCourse(item.secondcourse, context.getString(R.string.second)) })
+            add(SectionedDetailsView(context).apply { setCourse(item.sideorder, context.getString(R.string.side)) })
+            add(SectionedDetailsView(context).apply { setCourse(item.dessert, context.getString(R.string.dessert)) })
         }
     }
 
