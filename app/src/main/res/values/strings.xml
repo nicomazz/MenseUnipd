@@ -8,4 +8,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading">Loading...</string>
+    <string name="about_text">Source code and more informations at: github.com/nicomazz/MenseUnipd</string>
+    <string name="about">About</string>
+    <string name="ok">Ok</string>
+    <string name="notification">Notification</string>
+    <string name="schedule_limit">Too many schedule!</string>
+    <string name="info">info</string>
+    <string name="canteen_name">Canteen name</string>
+    <string name="until_menu_release">Until menu release</string>
 </resources>

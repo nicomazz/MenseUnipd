@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mense Unipd</string>
+    <string name="title_home">Lista</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifiche</string>
+    <string name="title_favourite">Preferiti</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading">Caricamento...</string>
+    <string name="about_text">Codice sorgente e maggiori informazini: github.com/nicomazz/MenseUnipd. Se c\'è qualcosa che non va o che vorresti aggiungere, aggiungi una issue o crea una pull request!</string>
+    <string name="about">Dettagli</string>
+    <string name="ok">Ok</string>
+    <string name="notification">Notifiche</string>
+    <string name="schedule_limit">Troppi elementi!</string>
+    <string name="canteen_name">Nome della mensa</string>
+    <string name="info">Info</string>
+    <string name="until_menu_release">Controllerà il menu una volta ogni 15 minuti finchè questo uscirà.</string>
+
+</resources>

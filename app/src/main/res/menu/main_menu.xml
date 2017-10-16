@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="info"
+        android:title="@string/info"
         android:id="@+id/info"
         android:icon="@drawable/ic_info_outline_white_24dp"
         app:showAsAction="always" />

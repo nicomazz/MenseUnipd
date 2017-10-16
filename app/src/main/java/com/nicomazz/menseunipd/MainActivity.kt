@@ -119,13 +119,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showInfoDialog() {
 
-        val s = SpannableString("Source code and more informations at: github.com/nicomazz/MenseUnipd");
+        val s = SpannableString(getString(R.string.about_text));
         Linkify.addLinks(s, Linkify.ALL);
 
         val dialog = AlertDialog.Builder(this)
-                .setTitle("About")
+                .setTitle(getString(R.string.about))
                 .setMessage(s)
-                .setPositiveButton("Ok", { _, _ -> })
+                .setPositiveButton(getString(R.string.ok), { _, _ -> })
                 .create()
 
         dialog.show()

@@ -26,14 +26,14 @@ class NotificationFragment : Fragment() {
 
         initList()
         initAddFab()
-        activity?.title = "Notification"
+        activity?.title = getString(R.string.notification)
         return rootView
     }
 
     private fun initAddFab() {
         rootView.addMenuAlarm.setOnClickListener {
             if (items?.size ?: 100 > 5) {
-                Toast.makeText(activity, "Too many schedule!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.schedule_limit), Toast.LENGTH_SHORT).show()
             } else {
                 MenuAlarmDataSource.add(context)
                 updateListItems()
