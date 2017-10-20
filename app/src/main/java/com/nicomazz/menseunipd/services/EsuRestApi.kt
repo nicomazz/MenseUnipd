@@ -20,6 +20,7 @@ class EsuRestApi {
 
     //private val BASE_URL = "http://mobile.esupd.gov.it"
     private val BASE_URL = "http://taptaptap.altervista.org"
+   // private val BASE_URL = "https://jsonplaceholder.typicode.com"
 
     init {
 
@@ -87,6 +88,7 @@ class EsuRestApi {
     private interface EsuClient {
         //  @GET("/api/reiservice.svc/canteens?lang=it")
         @GET("/ristoresu/cacher.php")
+      //  @GET("/posts/1")
         fun getInfo(): Call<List<Restaurant>>
     }
 

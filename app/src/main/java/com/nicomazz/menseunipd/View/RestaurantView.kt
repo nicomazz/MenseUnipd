@@ -1,6 +1,9 @@
 package com.nicomazz.menseunipd.View
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.support.v4.content.ContextCompat.startActivity
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,7 @@ import com.nicomazz.menseunipd.data.MenuAlarm
 import com.nicomazz.menseunipd.data.MenuAlarmDataSource
 import com.nicomazz.menseunipd.services.Restaurant
 import kotlinx.android.synthetic.main.view_restaurant.view.*
+
 
 class RestaurantView : FrameLayout {
     private val TAG = "RestaurantView"
@@ -69,6 +73,17 @@ class RestaurantView : FrameLayout {
 
             setupExpandCollapse()
 
+            setupNavigateIcon(item)
+
+        }
+    }
+
+    private fun setupNavigateIcon(item: Restaurant) {
+        navigate.setOnClickListener {
+            val gmmIntentUri = Uri.parse("google.navigation:q=${item.latitude},${item.longitude}&mode=w")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.`package` = "com.google.android.apps.maps"
+            context.startActivity(mapIntent)
         }
     }
 

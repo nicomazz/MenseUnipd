@@ -58,7 +58,7 @@ class RestaurantFragment : Fragment() {
                 onError = { message ->
                     rootView.swipeRefresh.isRefreshing = false
                     context?.let {
-                        Toast.makeText(context, "Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, R.string.error_data_download, Toast.LENGTH_LONG).show()
                     }
                 },
                 onTime = { time ->

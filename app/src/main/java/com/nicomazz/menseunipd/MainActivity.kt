@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             message.text = "Error in request!"
             Log.e(TAG, "Error in retrieve restaurants: $description")
         }, onTime = { time ->
-            Toast.makeText(this, "request time: $time ms", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Request time: $time ms", Toast.LENGTH_SHORT).show()
         })
     }
 

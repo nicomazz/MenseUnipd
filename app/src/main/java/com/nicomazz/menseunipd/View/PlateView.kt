@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import com.nicomazz.menseunipd.R
 import com.nicomazz.menseunipd.toHtml
 import kotlinx.android.synthetic.main.view_plate.view.*
+import org.jetbrains.anko.browse
 
 class PlateView : FrameLayout {
     private val TAG = "RestaurantView"
@@ -43,6 +44,9 @@ class PlateView : FrameLayout {
     }
 
     fun setName(name: String) {
+        setOnClickListener{
+            context.browse("https://www.google.it/search?q=$name".replace(" ","+"))
+        }
         mRootView.text.text = name.toHtml()
     }
 

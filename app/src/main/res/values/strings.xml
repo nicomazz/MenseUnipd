@@ -23,4 +23,5 @@
     <string name="dessert">Dessert</string>
     <string name="notify_menu">Notify when menu appears</string>
     <string name="time_gain">Time gain</string>
+    <string name="error_data_download">Error in retrieve restaurants data. Check Internet connectivity</string>
 </resources>

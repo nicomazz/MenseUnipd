@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.nicomazz.menseunipd.adapter.RestaurantListAdapter
 import com.nicomazz.menseunipd.data.TimeSavedManager
 import com.nicomazz.menseunipd.services.EsuRestApi
+import io.fabric.sdk.android.services.common.Crash
 import kotlinx.android.synthetic.main.fragment_restaurant_list.view.*
 
 /**
@@ -63,7 +65,9 @@ class RestaurantsListFragment : Fragment() {
                 },
                 onError = { message ->
                     rootView.swipeRefresh.isRefreshing = false
-                    Toast.makeText(context, "Error in retrieve restaurant info: $message", Toast.LENGTH_LONG).show()
+                    Crashlytics.log(message)
+                    Crashlytics.logException(Exception("Unable to download data!"))
+                    Toast.makeText(context, getString(R.string.error_data_download), Toast.LENGTH_LONG).show()
                 },
                 onTime = { time ->
                     activity?.let {

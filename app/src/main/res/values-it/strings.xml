@@ -9,7 +9,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading">Caricamento...</string>
-    <string name="about_text">Codice sorgente e maggiori informazini: github.com/nicomazz/MenseUnipd. Se c\'è qualcosa che non va o che vorresti aggiungere, aggiungi una issue o crea una pull request!</string>
+    <string name="about_text">Tutte le informazioni sono prese dal servizio ufficiale dell\'esu.\n\nDifferenze rispetto all\'app ufficiale:\n- Caricamento tramite da un \"<b>server cache</b>\" (il tempo per caricare i dati è tipicamente minore di 100 ms, contro i più di  5000 ms costanti dell\'app ufficiale)\n- Sistema per inviare il menu tramite una <b>notifica</b>\n- Ricerca rapida del piatto (premendo su un piatto verrà avviata una ricerca)\n\nCodice sorgente e maggiori informazioni: https://github.com/nicomazz/MenseUnipd. Se c\'è qualcosa che non va o che vorresti aggiungere, aggiungi una issue o crea una pull request!</string>
     <string name="about">Dettagli</string>
     <string name="ok">Ok</string>
     <string name="notification">Notifiche</string>
@@ -24,5 +24,6 @@
     <string name="side">Contorno</string>
     <string name="notify_menu">Inviami una notifica quando esce il menu</string>
     <string name="time_gain">Tempo risparmiato</string>
+    <string name="error_data_download">Errore nel downlaod dei dati, controlla di essere collegato ad internet</string>
 
 </resources>
