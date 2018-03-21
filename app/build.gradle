@@ -11,8 +11,8 @@ android {
         applicationId "com.nicomazz.menseunipd"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 8
-        versionName "0.0.8"
+        versionCode 9
+        versionName "0.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
