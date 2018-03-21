@@ -24,4 +24,14 @@
     <string name="notify_menu">Notify when menu appears</string>
     <string name="time_gain">Time gain</string>
     <string name="error_data_download">Error in retrieve restaurants data. Check Internet connectivity</string>
+
+    <string-array name="mense" translatable="false">
+        <item>Murialdo</item>
+        <item>Forcellini</item>
+        <item>Acli</item>
+        <item>San Francesco</item>
+        <item>Agripolis</item>
+        <item>Nord Piovego</item>
+        <item>Belzoni</item>
+    </string-array>
 </resources>

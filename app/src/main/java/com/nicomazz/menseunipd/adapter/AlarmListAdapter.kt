@@ -22,6 +22,10 @@ import org.jetbrains.anko.forEachChildWithIndex
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
+import android.widget.AutoCompleteTextView
+import android.widget.ArrayAdapter
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk25.coroutines.onFocusChange
 
 
 /**
@@ -66,7 +70,7 @@ class AlarmListAdapter(private val activity: Activity,
         }
     }
 
-    private fun setupName(canteenName: EditText, item: MenuAlarm) {
+    private fun setupName(canteenName: AutoCompleteTextView, item: MenuAlarm) {
         canteenName.setText(item.name)
         canteenName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -78,8 +82,14 @@ class AlarmListAdapter(private val activity: Activity,
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 item.setCanteenName(s.toString())
             }
-
         })
+        val mense = mContext.resources.getStringArray(R.array.mense)
+        val adapter = ArrayAdapter<String>(mContext,
+                android.R.layout.simple_dropdown_item_1line, mense)
+        canteenName.setAdapter<ArrayAdapter<String>>(adapter)
+        canteenName.threshold = 0
+        //canteenName.onClick { canteenName.showDropDown() }
+        canteenName.onFocusChange { v, hasFocus -> if (hasFocus) canteenName.showDropDown() }
     }
 
     private fun updateTime(textView: TextView, item: MenuAlarm) {

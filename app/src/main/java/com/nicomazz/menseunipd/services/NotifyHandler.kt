@@ -8,6 +8,10 @@ import android.support.v4.app.NotificationCompat
 import com.nicomazz.menseunipd.MainActivity
 import com.nicomazz.menseunipd.R
 import com.nicomazz.menseunipd.toHtml
+import android.app.NotificationChannel
+import android.graphics.Color
+import android.os.Build
+import android.util.Log
 
 
 /**
@@ -15,6 +19,7 @@ import com.nicomazz.menseunipd.toHtml
  */
 fun sendMenuNotify(context: Context, restaurant: Restaurant) {
 
+    val NOTIFY_ID = "ORARI_MENSE_UNIPD";
     val resultIntent = Intent(context, MainActivity::class.java)
     resultIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -32,8 +37,21 @@ fun sendMenuNotify(context: Context, restaurant: Restaurant) {
             .setContentTitle("${restaurant.name} menu")
             .setContentIntent(resultPendingIntent)
             .setStyle(NotificationCompat.BigTextStyle()
-                    .bigText(text))
+                .bigText(text))
             .setContentText(text)
 
-    (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).notify(12412, mBuilder.build())
+    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        /* Create or update. */
+        val channel = NotificationChannel(NOTIFY_ID,
+            "Notifiche per i menu delle mense di padova",
+            NotificationManager.IMPORTANCE_DEFAULT)
+        notificationManager.createNotificationChannel(channel)
+        mBuilder.setChannelId(NOTIFY_ID)
+
+    }
+
+    notificationManager.notify(12411, mBuilder.build())
+
 }

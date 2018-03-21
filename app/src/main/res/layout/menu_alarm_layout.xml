@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
             android:id="@+id/canteenName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
