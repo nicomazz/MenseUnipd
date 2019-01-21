@@ -12,6 +12,12 @@
         android:title="@string/title_favourite" />
 
     <item
+        android:id="@+id/qr_code"
+        android:icon="@drawable/qrcode"
+        android:title="@string/qr_code" />
+
+
+    <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />

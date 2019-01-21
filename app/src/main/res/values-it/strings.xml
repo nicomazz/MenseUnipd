@@ -25,5 +25,14 @@
     <string name="notify_menu">Inviami una notifica quando esce il menu</string>
     <string name="time_gain">Tempo risparmiato</string>
     <string name="error_data_download">Errore nel downlaod dei dati, controlla di essere collegato ad internet</string>
+    <string name="qr_code">Qr</string>
+    <string name="scannerizza_il_qr_code_scaricato_dopo_l_infinito_procedimento_di_registrazione_online_ed_inserisci_qui_sotto_il_codice_in_questo_modo_potrai_vederlo_qui_sotto">Scannerizza il QR code scaricato dopo l\'infinito procedimento di registrazione online, ed inserisci qui sotto il codice. In questo modo potrai averlo sempre sotto mano in questo tab. Puoi usare una delle tante app per effettuare la scansione.</string>
+    <string name="se_non_hai_ancora_il_qr_code_vai_su_nhttp_www_esupd_gov_it_n_servizi_online_in_alto_a_destra_e_registrati_la_procedura_molto_lunga_e_richiede_l_upload_di_un_documento_di_identit"><![CDATA[Se non hai ancora il qr-code, vai su  http://www.esupd.gov.it/ -> servizi online (in alto a destra) e registrati. La procedura è molto lunga, e richiede l\'upload di un documento di identità]]></string>
+    <string name="something_like_b06657833652">Qualcosa come: B06657833652...</string>
+    <string name="too_long">La stringa è troppo lunga!</string>
+    <string name="too_short">La stringa è troppo corta!</string>
+    <string name="modify_qr_code">Sei sicuro di voler modificare il QR code?</string>
+    <string name="Yes">Si</string>
+    <string name="No">No</string>
 
 </resources>

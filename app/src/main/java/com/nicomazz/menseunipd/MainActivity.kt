@@ -40,29 +40,12 @@ class MainActivity : AppCompatActivity() {
         if (getFavouriteRestaurantName() != null) {
             navigation.selectedItemId = R.id.navigation_favourite
         }
-        // getJsonInfo()
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-
-    private fun getJsonInfo() {
-        EsuRestApi().getRestaurants(onSuccess = { restarants ->
-            restaurantsFetched = restarants
-            val murialdo = restarants?.firstOrNull { it?.name?.toLowerCase()?.contains("murialdo") ?: false }
-
-            Log.d(TAG, "received ${restarants?.size} restaurants!")
-            message.text = murialdo?.menu.toString().toHtml()// ?: "No menu found"
-        }, onError = { description ->
-            message.text = "Error in request!"
-            Log.e(TAG, "Error in retrieve restaurants: $description")
-        }, onTime = { time ->
-            Toast.makeText(this, "Request time: $time ms", Toast.LENGTH_SHORT).show()
-        })
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -75,6 +58,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_favourite -> {
                     setFavouriteFragment()
                 }
+                R.id.qr_code -> {
+                    setQrCodeFragment()
+                }
                 R.id.navigation_notifications -> {
                     setNotificationFragment()
 
@@ -84,28 +70,36 @@ class MainActivity : AppCompatActivity() {
         true
     }
 
+    private fun setQrCodeFragment() {
+        val frag = QrCodeFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content, frag).commit();
+    }
+
     private fun setNotificationFragment() {
         val frag = NotificationFragment()
         supportFragmentManager.beginTransaction()
-                .replace(R.id.content, frag).commit(); }
+            .replace(R.id.content, frag).commit(); }
 
     private fun getFavouriteRestaurantName(): String? = FavouriteManager.getFavourite(this)
 
     private fun getFavouriteRestaurant(): Restaurant? {
         if (restaurantsFetched == null)
             return null
-        return restaurantsFetched?.firstOrNull { it?.name?.toLowerCase()?.contains(getFavouriteRestaurantName() ?: "-") ?: false }
+        return restaurantsFetched?.firstOrNull {
+            it?.name?.toLowerCase()?.contains(getFavouriteRestaurantName() ?: "-") ?: false
+        }
     }
 
     private fun setFavouriteFragment() {
         val frag = RestaurantFragment.newInstance(getFavouriteRestaurantName(), getFavouriteRestaurant())
         supportFragmentManager.beginTransaction()
-                .replace(R.id.content, frag).commit();
+            .replace(R.id.content, frag).commit();
     }
 
     private fun setRestaurantList() {
         supportFragmentManager.beginTransaction()
-                .replace(R.id.content, RestaurantsListFragment()).commit();
+            .replace(R.id.content, RestaurantsListFragment()).commit();
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -119,8 +113,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showTimeDialog() {
-
-
         val millis_gain = TimeSavedManager.getMsSaved(this)
         var message = "Grazie a quest'app sono stati risparmiati <b>${millis_gain / 1000} secondi</b> per il caricamento dei dati rispetto all'app ufficiale.<br>Scopri di più su github.com/nicomazz/MenseUnipd"
         message += "<br><br>Numero richieste: ${TimeSavedManager.getRequestsNumber(this)}"
@@ -128,10 +120,10 @@ class MainActivity : AppCompatActivity() {
         val s = SpannableString(message.toHtml());
         Linkify.addLinks(s, Linkify.ALL);
         val dialog = AlertDialog.Builder(this)
-                .setTitle(getString(R.string.time_gain))
-                .setMessage(s)
-                .setPositiveButton(getString(R.string.ok), { _, _ -> })
-                .create()
+            .setTitle(getString(R.string.time_gain))
+            .setMessage(s)
+            .setPositiveButton(getString(R.string.ok), { _, _ -> })
+            .create()
 
         dialog.show()
 
@@ -144,10 +136,10 @@ class MainActivity : AppCompatActivity() {
         Linkify.addLinks(s, Linkify.ALL);
 
         val dialog = AlertDialog.Builder(this)
-                .setTitle(getString(R.string.about))
-                .setMessage(s)
-                .setPositiveButton(getString(R.string.ok), { _, _ -> })
-                .create()
+            .setTitle(getString(R.string.about))
+            .setMessage(s)
+            .setPositiveButton(getString(R.string.ok), { _, _ -> })
+            .create()
 
         dialog.show()
 

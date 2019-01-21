@@ -89,7 +89,7 @@ class AlarmListAdapter(private val activity: Activity,
         canteenName.setAdapter<ArrayAdapter<String>>(adapter)
         canteenName.threshold = 0
         //canteenName.onClick { canteenName.showDropDown() }
-        canteenName.onFocusChange { v, hasFocus -> if (hasFocus) canteenName.showDropDown() }
+        canteenName.setOnFocusChangeListener { v, hasFocus -> if (hasFocus) canteenName.showDropDown() }
     }
 
     private fun updateTime(textView: TextView, item: MenuAlarm) {

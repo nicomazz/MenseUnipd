@@ -24,6 +24,15 @@
     <string name="notify_menu">Notify when menu appears</string>
     <string name="time_gain">Time gain</string>
     <string name="error_data_download">Error in retrieve restaurants data. Check Internet connectivity</string>
+    <string name="qr_code">Qr</string>
+    <string name="scannerizza_il_qr_code_scaricato_dopo_l_infinito_procedimento_di_registrazione_online_ed_inserisci_qui_sotto_il_codice_in_questo_modo_potrai_vederlo_qui_sotto"> Scan the QR code, and insert the string below to see it here</string>
+    <string name="se_non_hai_ancora_il_qr_code_vai_su_nhttp_www_esupd_gov_it_n_servizi_online_in_alto_a_destra_e_registrati_la_procedura_molto_lunga_e_richiede_l_upload_di_un_documento_di_identit"><![CDATA[If you don\'t have it, go to http://www.esupd.gov.it/\n to obtain one]]></string>
+    <string name="something_like_b06657833652">Something like: B06657833652...</string>
+    <string name="too_long">The string is too long!</string>
+    <string name="too_short">The string is too short!</string>
+    <string name="modify_qr_code">Are you sure to modify the qr code string?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 
     <string-array name="mense" translatable="false">
         <item>Murialdo</item>

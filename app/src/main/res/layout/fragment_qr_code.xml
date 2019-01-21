@@ -1,0 +1,79 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nicomazz.menseunipd.RestaurantFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/qr_code_setting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="50dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/scannerizza_il_qr_code_scaricato_dopo_l_infinito_procedimento_di_registrazione_online_ed_inserisci_qui_sotto_il_codice_in_questo_modo_potrai_vederlo_qui_sotto"
+                android:textAlignment="center"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/qr_code_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="@string/something_like_b06657833652"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/accent"
+                android:textSize="12dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/save_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:src="@drawable/ic_done_white_24dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:autoLink="web"
+                android:text="@string/se_non_hai_ancora_il_qr_code_vai_su_nhttp_www_esupd_gov_it_n_servizi_online_in_alto_a_destra_e_registrati_la_procedura_molto_lunga_e_richiede_l_upload_di_un_documento_di_identit"
+                android:textAlignment="center"
+                android:textColor="#777777" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/qr_code_image"/>
+    </FrameLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/remove_qr_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_edit_white_24dp"
+        android:visibility="gone" />
+
+</android.support.design.widget.CoordinatorLayout>
