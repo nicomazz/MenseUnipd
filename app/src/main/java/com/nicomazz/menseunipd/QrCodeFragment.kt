@@ -3,22 +3,18 @@ package com.nicomazz.menseunipd
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.answers.Answers
 import com.crashlytics.android.answers.CustomEvent
 import com.nicomazz.menseunipd.data.QrCodeManager
 import kotlinx.android.synthetic.main.fragment_qr_code.*
 import net.glxn.qrgen.android.QRCode
-import org.jetbrains.anko.backgroundColor
 
 
 /**
@@ -30,7 +26,7 @@ class QrCodeFragment : Fragment() {
 
 
     private lateinit var rootView: View
-
+    private var prevBrightness: Float = 0.0f
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -48,7 +44,20 @@ class QrCodeFragment : Fragment() {
         initQrCodeSettings()
         initResetQrCode()
         handleState()
+        maxBrightness()
     }
+
+    private fun maxBrightness() {
+        prevBrightness = activity.window.attributes.screenBrightness
+        setBrightness(1.0f)
+    }
+
+
+    private fun setBrightness(b: Float) =
+        with(activity.window.attributes) {
+            screenBrightness = b
+            activity.window.attributes = this
+        }
 
 
     private fun handleState() {
@@ -57,9 +66,9 @@ class QrCodeFragment : Fragment() {
         qr_code_image.visibility = View.GONE
 
         if (hasQrCode()) {
-            showQrCode(QrCodeManager.getQrCodeString(context));
+            showQrCode(QrCodeManager.getQrCodeString(context))
         } else
-            qr_code_setting.visibility = View.VISIBLE;
+            qr_code_setting.visibility = View.VISIBLE
     }
 
     private fun showQrCode(qrCodeString: String?) {
@@ -71,7 +80,7 @@ class QrCodeFragment : Fragment() {
     }
 
 
-    private fun hasQrCode() = QrCodeManager.hasQrCodeString(context);
+    private fun hasQrCode() = QrCodeManager.hasQrCodeString(context)
 
     private fun setQrCode(s: String) {
         Answers.getInstance().logCustom(CustomEvent("QRCode setted"))
@@ -80,7 +89,7 @@ class QrCodeFragment : Fragment() {
 
     private fun initQrCodeSettings() {
         save_code.setOnClickListener {
-            setQrCode(qr_code_code.text.toString());
+            setQrCode(qr_code_code.text.toString())
             qr_code_code.clearFocus()
             handleState()
         }
@@ -132,7 +141,10 @@ class QrCodeFragment : Fragment() {
         }
     }
 
-
+    override fun onPause() {
+        super.onPause()
+        setBrightness(prevBrightness)
+    }
 
 
 }
